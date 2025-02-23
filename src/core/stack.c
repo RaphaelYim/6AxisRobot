@@ -5,7 +5,7 @@
 
 void stack_push(Stack* stack, int value) {
     if (is_stack_full(stack)) {
-        printf("\nStack Overflow");
+        printf("Stack Overflow\n");
         return;
     }
     stack->items[stack->size] = value;
@@ -15,7 +15,7 @@ void stack_push(Stack* stack, int value) {
 
 void stack_pop(Stack* stack) {
     if (is_stack_empty(stack)) {
-        printf("\nStack Underflow");
+        printf("Stack Underflow\n");
         return;
     }
     stack->size--;
@@ -25,7 +25,7 @@ void stack_pop(Stack* stack) {
 
 int stack_top(Stack* stack) {
     if (is_stack_empty(stack)) {
-        printf("\nStack Empty. Nothing at top.");
+        printf("Stack Empty. Nothing at top.\n");
         return -1;
     }
     return stack->items[stack->size-1];
