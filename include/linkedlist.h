@@ -9,3 +9,6 @@ typedef struct LinkedListNode {
     PhidgetRCServoHandle value;
     struct LinkedListNode* nextNode;
 } LinkedListNode;
+
+// Prototype
+LinkedListNode* create_;
