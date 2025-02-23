@@ -1,9 +1,9 @@
 // Raphael
 // linkedlist.c
-// Source File. Implementation of a  linked list with a PhidgetRCServoHandle as the value
+// Source File. Implementation of a linked list with a PhidgetRCServoHandle as the value
 
 #include <stdio.h>
-#include "../include/linked_list.h"
+#include "linked_list.h"
 
 // Creating a LinkedList
 LinkedListNode* create_node(PhidgetRCServoHandle value) {
