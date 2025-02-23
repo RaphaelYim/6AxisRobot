@@ -1,6 +1,6 @@
 // Raphael
 // linkedlist.h
-// Linked List Prototypes
+// Linked List Prototypes & LinkedListNode typedef
 
 #ifndef LINKED_LIST_H  
 #define LINKED_LIST_H 
