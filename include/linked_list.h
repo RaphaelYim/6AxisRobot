@@ -1,6 +1,6 @@
 // Raphael
 // linkedlist.h
-// Header File for linked lists.
+// Linked List Prototypes
 
 #ifndef LINKED_LIST_H  
 #define LINKED_LIST_H 
