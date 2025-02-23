@@ -10,7 +10,7 @@ LinkedListNode* create_node(PhidgetRCServoHandle value) {
     LinkedListNode* new_node = (LinkedListNode*)malloc(sizeof(LinkedListNode));
     if (!new_node) {
         printf("\nMemory Allocation Failed");
-        exit(1);
+        return;
     }
     new_node->nextNode = NULL;
     new_node->value = value;
@@ -26,7 +26,7 @@ void append_node(LinkedListNode* head, PhidgetRCServoHandle value) {
     LinkedListNode* new_node = (LinkedListNode*)malloc(sizeof(LinkedListNode));
     if (!new_node) {
         printf("\nMemory Allocation Failed");
-        exit(1);
+        return;
     }
     current->nextNode = new_node;
     new_node->nextNode = NULL;
@@ -68,7 +68,7 @@ PhidgetRCServoHandle* linked_list_as_array(LinkedListNode** head) {
     PhidgetRCServoHandle* linked_list_array = (PhidgetRCServoHandle*)malloc(size * sizeof(PhidgetRCServoHandle));
     if (!linked_list_array) {
         printf("\nMemory Allocation Failed");
-        exit(1);
+        return;
     }
     LinkedListNode* current = *head;
     
