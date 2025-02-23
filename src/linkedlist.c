@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <phidget22.h>
-#include "linkedlist.h"
+#include "../include/linkedlist.h"
 
 // Creating a LinkedList
 LinkedListNode* create_linked_list(PhidgetRCServoHandle value) {
