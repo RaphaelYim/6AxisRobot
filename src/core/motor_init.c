@@ -1,6 +1,6 @@
 // Raphael
 // motor_init.c
-// Implementation of functions outlined in motor_init.h. Wow, adhering to SRP?
+// Implementation of functions outlined in motor_init.h.
 
 #include "motor_init.h"
 
