@@ -7,70 +7,75 @@
 #include "../include/linkedlist.h"
 
 // Creating a LinkedList
-LinkedListNode* create_linked_list(PhidgetRCServoHandle value) {
-    LinkedListNode* createdHead = (LinkedListNode*)malloc(sizeof(LinkedListNode));
-    if (!createdHead) {
+LinkedListNode* create_node(PhidgetRCServoHandle value) {
+    LinkedListNode* new_node = (LinkedListNode*)malloc(sizeof(LinkedListNode));
+    if (!new_node) {
         printf("\nMemory Allocation Failed");
         exit(1);
     }
-    createdHead->nextNode = NULL;
-    createdHead->value = value;
-    return createdHead;
+    new_node->nextNode = NULL;
+    new_node->value = value;
+    return new_node;
 } 
 
 // Appending to LinkedList at the end
-void append_to_linked_list(LinkedListNode* head, PhidgetRCServoHandle value) {
-    LinkedListNode* temporary_pointer = head;
-    while (temporary_pointer->nextNode != NULL) {
-        temporary_pointer = temporary_pointer->nextNode;
+void append_node(LinkedListNode* head, PhidgetRCServoHandle value) {
+    LinkedListNode* current = head;
+    while (current->nextNode != NULL) {
+        current = current->nextNode;
     };
-    LinkedListNode* createdNode = (LinkedListNode*)malloc(sizeof(LinkedListNode));
-    if (!createdNode) {
+    LinkedListNode* new_node = (LinkedListNode*)malloc(sizeof(LinkedListNode));
+    if (!new_node) {
         printf("\nMemory Allocation Failed");
         exit(1);
     }
-    temporary_pointer->nextNode = createdNode;
-    createdNode->nextNode = NULL;
-    createdNode->value = value;
+    current->nextNode = new_node;
+    new_node->nextNode = NULL;
+    new_node->value = value;
 }
 
 // Getting Length of LinkedList
 int get_linked_list_length(LinkedListNode* head) {
-    LinkedListNode* temporary_pointer = head;
+    LinkedListNode* current = head;
     int count = 0;
-    while (temporary_pointer->nextNode != NULL) {
+    while (current) {
         count++;
-        temporary_pointer = temporary_pointer->nextNode;
+        current = current->nextNode;
     }
+    
     return count;
 
 }
 
 // Getting value of LinkedList at index
-LinkedListNode* get_linked_list_node_at_index(int index, LinkedListNode** head) {
+LinkedListNode* get_node_at_index(int index, LinkedListNode** head) {
     if (index >= get_linked_list_length(*head)) {
         printf("\nOut Of Range");
         return NULL;
     }
 
     int c = 0;
-    LinkedListNode* temporary_pointer = *head;
+    LinkedListNode* current = *head;
     while (c != index) {
-        temporary_pointer = temporary_pointer->nextNode;
+        current = current->nextNode;
         c++;
     }
-    return temporary_pointer;
+    return current;
 }
 
 // LinkedList as array
 PhidgetRCServoHandle* linked_list_as_array(LinkedListNode** head) {
-    int length = get_linked_list_length(*head);
-    static PhidgetRCServoHandle* linked_list_array = (PhidgetRCServoHandle*)sizeof(length * sizeof(PhidgetRCServoHandle)); // Is this static abuse?
-    LinkedListNode* temporary_pointer = *head;
+    int size = get_linked_list_length(*head);
+    PhidgetRCServoHandle* linked_list_array = (PhidgetRCServoHandle*)malloc(size * sizeof(PhidgetRCServoHandle));
+    if (!linked_list_array) {
+        printf("\nMemory Allocation Failed");
+        exit(1);
+    }
+    LinkedListNode* current = *head;
     
-    for (int i=0;i<length;i++) {
-        linked_list_array[i] = temporary_pointer->value;
-        temporary_pointer=temporary_pointer->nextNode;
+    for (int i=0;i<size;i++) {
+        linked_list_array[i] = current->value;
+        current=current->nextNode;
     }
 
     return linked_list_array;
