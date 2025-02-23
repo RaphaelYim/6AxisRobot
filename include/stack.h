@@ -10,7 +10,7 @@
 // Defining Stack
 typedef struct Stack
 {
-   int items[7];
+   int items[STACK_CAPACITY];
    int size;
 } Stack;
 
