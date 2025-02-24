@@ -4,6 +4,7 @@
 
 #include "motor_control.h"
 #include <phidget22.h>
+#include <math.h>
 
 // ndeg is between 2 and 4 digits long.
 // (n-1) is the motor to move
@@ -14,11 +15,12 @@ void move_motor(LinkedListNode* head, int ndeg) {
     int digit = 0;
     while (n >= 10) {
         n /= 10;
-        digit ++;
+        digit++;
     }
-    digit += 1;
     PhidgetRCServoHandle* motor = get_linked_list_value(n-1,head)->value;
 
-    int deg = ndeg - (n*(digit*10));
+    int deg = ndeg - (((int)pow(10,digit))*n);
+
+    PhidgetRCServo_setTargetPosition(motor,deg);
 
 }
