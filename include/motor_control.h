@@ -7,6 +7,6 @@
 
 #include "linked_list.h"
 
-void move_motor(LinkedListNode head, int cmd);
+void move_motor(LinkedListNode head, int ndeg);
 
 #endif MOTOR_CONTROL
