@@ -14,7 +14,7 @@ typedef struct Stack
    int size;
 } Stack;
 
-void stack_push(Stack* stack);
+void stack_push(Stack* stack, int value);
 void stack_pop(Stack* stack);
 int stack_top(Stack* stack);
 int is_stack_empty(Stack* stack);
